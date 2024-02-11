@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-container {
+  width: min(1920px, 100%) !important;
+  max-width: none !important;
+  margin-inline: auto !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
