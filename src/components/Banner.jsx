@@ -1,10 +1,12 @@
 import { Box, CardMedia, Typography } from "@mui/material";
 import heroBannerImg from "../assets/images/hero-building-image.png";
-
-const Banner = () => {
+import { forwardRef } from "react";
+// eslint-disable-next-line react/prop-types, react/display-name
+const Banner = forwardRef((props, ref) => {
   return (
     <>
       <Box
+        ref={ref}
         id="scroll-container"
         sx={{
           width: "100%",
@@ -66,6 +68,6 @@ const Banner = () => {
       </Box>
     </>
   );
-};
+});
 
 export default Banner;

@@ -8,7 +8,11 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { IconButton } from "@mui/material";
 
-export default function MobileDrawer() {
+// eslint-disable-next-line react/prop-types
+export default function MobileDrawer({
+  // eslint-disable-next-line react/prop-types
+  handleNavigation,
+}) {
   const [state, setState] = React.useState({
     right: false,
   });
@@ -32,11 +36,17 @@ export default function MobileDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Home", "Contact Us"].map((text) => (
+        {["home", "project", "contact"].map((text) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => handleNavigation(text)}>
               <ListItemText
-                primary={text}
+                primary={
+                  text === "home"
+                    ? "Home"
+                    : text === "project"
+                    ? "Projects"
+                    : "Contact Us"
+                }
                 sx={{
                   color: "text.primary",
                   fontWeight: "600 !important",

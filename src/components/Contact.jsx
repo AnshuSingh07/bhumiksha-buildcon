@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import {
   Box,
   Container,
@@ -15,12 +16,13 @@ import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import GoogleLocationMap from "./GoogleLocationMap";
 import { Link } from "react-router-dom";
+import { forwardRef } from "react";
 
-const Contact = () => {
+const Contact = forwardRef((props, ref) => {
   return (
     <>
       <Container>
-        <Box sx={{ margin: "5rem 0rem" }}>
+        <Box ref={ref} sx={{ margin: "5rem 0rem" }}>
           <Typography
             variant="h4"
             color="text.primary"
@@ -290,6 +292,6 @@ const Contact = () => {
       </Container>
     </>
   );
-};
+});
 
 export default Contact;

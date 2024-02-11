@@ -1,12 +1,14 @@
+/* eslint-disable react/display-name */
 import { Box, Container, Grid, Typography } from "@mui/material";
 import PlotCard from "./PlotCard";
 import { projects } from "../data/projects";
+import { forwardRef } from "react";
 
-const ProjectSection = () => {
+const ProjectSection = forwardRef((props, ref) => {
   return (
     <>
       <Container>
-        <Box sx={{ margin: "5rem 0rem" }}>
+        <Box ref={ref} sx={{ margin: "5rem 0rem" }}>
           <Typography
             variant="h4"
             color="text.primary"
@@ -40,6 +42,6 @@ const ProjectSection = () => {
       </Container>
     </>
   );
-};
+});
 
 export default ProjectSection;

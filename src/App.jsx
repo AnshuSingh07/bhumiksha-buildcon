@@ -6,16 +6,24 @@ import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import { BrowserRouter as Router } from "react-router-dom";
 import Banner from "./components/Banner";
+import { useRef } from "react";
 
 function App() {
+  const homeRef = useRef(null);
+  const projectRef = useRef(null);
+  const contactRef = useRef(null);
   return (
     <>
       <Router>
-        <Header />
+        <Header
+          homeRef={homeRef}
+          projectRef={projectRef}
+          contactRef={contactRef}
+        />
         <Container className="custom-container" sx={{ marginTop: "75px" }}>
-          <Banner />
-          <ProjectSection />
-          <Contact />
+          <Banner ref={homeRef} />
+          <ProjectSection ref={projectRef} />
+          <Contact ref={contactRef} />
         </Container>
         <Footer />
       </Router>

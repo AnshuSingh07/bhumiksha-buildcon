@@ -2,7 +2,20 @@ import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import logo from "../assets/images/brand-logo.png";
 import MobileDrawer from "./MobileDrawer";
 
-const Header = () => {
+// eslint-disable-next-line react/prop-types
+const Header = ({ homeRef, projectRef, contactRef }) => {
+  const handleNavigation = (value) => {
+    if (value === "home") {
+      // eslint-disable-next-line react/prop-types
+      homeRef.current.scrollIntoView({ behavior: "smooth" });
+    } else if (value === "project") {
+      // eslint-disable-next-line react/prop-types
+      projectRef.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // eslint-disable-next-line react/prop-types
+      contactRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <>
       <AppBar sx={{ padding: "0 !important", backgroundColor: "#f2f2f3" }}>
@@ -67,6 +80,7 @@ const Header = () => {
                     padding: "6px 4px",
                   },
                 }}
+                onClick={() => handleNavigation("home")}
               >
                 Home
               </Button>
@@ -82,6 +96,23 @@ const Header = () => {
                     padding: "6px 4px",
                   },
                 }}
+                onClick={() => handleNavigation("project")}
+              >
+                Projects
+              </Button>
+
+              <Button
+                sx={{
+                  textTransform: "capitalize",
+                  color: "text.primary",
+                  fontWeight: "600",
+                  fontSize: "1.2rem",
+                  padding: "6px 10px",
+                  "@media (max-width: 1024px)": {
+                    padding: "6px 4px",
+                  },
+                }}
+                onClick={() => handleNavigation("contact")}
               >
                 Contact Us
               </Button>
@@ -89,7 +120,7 @@ const Header = () => {
             <Box
               sx={{ display: { xs: "flex", lg: "none" }, alignItems: "center" }}
             >
-              <MobileDrawer />
+              <MobileDrawer handleNavigation={handleNavigation} />
             </Box>
           </Toolbar>
         </Box>
